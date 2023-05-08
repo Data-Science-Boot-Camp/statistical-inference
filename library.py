@@ -3,40 +3,23 @@ Funtions for module 3 of the Data Science bootcamp
 """
 import random
 
-data_science_students = [
-    "Claudio Bahamonde",
-    "Felipe Abarzúa",
-    "Diego Rodriguez",
-    "Javier Pizarro",
-    "Smilling Battaglini",
-    "Pamela Labbé",
-    "Marilina Fuentes",
-    "Jaime Castillo",
-    "Rodrigo Castillo",
-    "Ignacia Arenas",
-    "Luis reyes",
-    "Felipe Cabello",
-    "Polette Pino",
-    "Karen Lobos",
-    "Diego Ávila",
-    "Constanza Guzman",
-    "Nicole Alejandra Araya",
-    "Carlos Andrés Abarca",
-    "Marco Antonio Ramos",
-    "Claudia Araya",
-    "Daniela Hernández",
-    "Sergio Ananias",
-    "Alexis Bacian",
-    "Cristian Alvarez",
-    "Nubia Ascencio",
-    "Veronica Marín",
-    "Liliana Romina Garmendia",
-    "Rocio Macari",
-    "Loreto Llambias",
-    "Braulio Valdés",
-]
+from constants import STUDENTS_DS
 
-def random_student()-> str:
+
+def z_or_t_score(
+        p:float, distribution: str = 'N'
+) -> float:
+    """
+    Compute Z or T score depending on the
+    distribution inputed by the user. The Z or
+    T score are used to compute confidence intervals.
+
+
+    """
+
+    pass
+
+def random_student() -> str:
     """"
     Seleccionar un estudiante al azar de la lista de estudiantes
     de data science.
@@ -45,9 +28,10 @@ def random_student()-> str:
     name: Nombre del estudiante seleccionado
     """
 
-    name = random.choice(data_science_students)
+    name = random.choice(STUDENTS_DS)
 
     return name
+
 
 def n_random_students(n_students: int) -> list:
     """
@@ -62,7 +46,6 @@ def n_random_students(n_students: int) -> list:
     students: Lista con los nombres de los estudiantes seleccionados
     """
 
-    students = random.sample(data_science_students, n_students)
-
+    students = random.sample(STUDENTS_DS, n_students)
 
     return students
