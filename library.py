@@ -3,21 +3,44 @@ Funtions for module 3 of the Data Science bootcamp
 """
 import random
 
+from scipy.stats import norm, t
+
 from constants import STUDENTS_DS
 
 
 def z_or_t_score(
-        p:float, distribution: str = 'N'
+        confidence: float = 95, distribution: str = 'N', df: int = 99
 ) -> float:
     """
-    Compute Z or T score depending on the
-    distribution inputed by the user. The Z or
-    T score are used to compute confidence intervals.
+    Compute Z or T score depending for a given confidence level.
+    It uses the critical value for a two-tailed test from a normal
+    or t-student distribution.
 
+    INPUT
+    confidence: Confidence level for the test
+    distribution: Distribution to use. Can be 'N' for normal or 'T'
+    for t-student
 
+    RETURNS
+    z_alpha_2: Critical value for the test
     """
 
-    pass
+    assert 0 < confidence < 1, 'Confidence level must be between 0 and 1'
+
+    assert distribution in ['N', 'T'], 'Distribution must be N or T'
+
+    alpha_2 = (1 - confidence) / 2
+
+    if distribution == 'N':
+
+        z_alpha_2 = norm.ppf(1-alpha_2)
+
+        return z_alpha_2
+
+    t_alpha_2 = t.ppf(1-alpha_2, df=df)
+
+    return t_alpha_2
+
 
 def random_student() -> str:
     """"
